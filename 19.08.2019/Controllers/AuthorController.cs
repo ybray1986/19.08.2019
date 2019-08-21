@@ -17,6 +17,7 @@ namespace _19._08._2019.Controllers
             using(Model1 db =new Model1())
             {
                 list = db.Authors.ToList();
+
             }
             return View(list);
         }
