@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,51 +21,52 @@ namespace _19._08._2019
             return View(authors);
         }
 
-        public ActionResult Create()
+        public ActionResult CreateEdit()
         {
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CreateEdit(int? id)
+        {
 
+            if (id != null)
+            {
+                Authors author;
+                using (Model1 db = new Model1())
+                {
+                    author = db.Authors.Where(x => x.Id == id).FirstOrDefault();
+                }
+                return View(author);
+            }
+            else
+            {
+                return View();
+            }
+        }
         [HttpPost]
-        public ActionResult Create(Authors author)
+        public ActionResult CreateEdit(Authors author)
         {
-
-            using (Model1 db = new Model1())
+            if (author.Id == 0)
             {
-                db.Authors.Add(author);
-                db.SaveChanges();
+                using (Model1 db = new Model1())
+                {
+                    db.Authors.Add(author);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-
-            return Redirect("Index");
-        }
-
-
-
-        public ActionResult Edit(int id)
-        {
-            Authors author;
-            using (Model1 db = new Model1())
+            else
             {
-                author = db.Authors.Where(x => x.Id == id).FirstOrDefault();
+                using (Model1 db = new Model1())
+                {
+                    var oldAuthor = db.Authors.Where(x => x.Id == author.Id).FirstOrDefault();
+                    oldAuthor.FirstName = author.FirstName;
+                    oldAuthor.LastName = author.LastName;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            return View(author);
         }
-
-        [HttpPost]
-        public ActionResult Edit(Authors author)
-        {
-
-            using (Model1 db = new Model1())
-            {
-                var oldAuthor = db.Authors.Where(x => x.Id == author.Id).FirstOrDefault();
-                oldAuthor.FirstName = author.FirstName;
-                oldAuthor.LastName = author.LastName;
-                db.SaveChanges();
-            }
-
-            return RedirectToActionPermanent("Index", "Author");
-        }
-
     }
 }
