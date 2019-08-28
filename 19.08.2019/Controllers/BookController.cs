@@ -15,13 +15,13 @@ namespace _19._08._2019
             using (Model1 db = new Model1())
             {
                 books = db.Books.ToList();
-                ViewBag.AuthID = db.Authors.ToList();
             }
             return View(books);
         }
 
         public ActionResult CreateEdit()
         {
+            
             return View();
         }
 
