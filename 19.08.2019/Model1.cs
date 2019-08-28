@@ -14,6 +14,8 @@ namespace _19._08._2019
 
         public virtual DbSet<Authors> Authors { get; set; }
         public virtual DbSet<Books> Books { get; set; }
+        public virtual DbSet<Library> Library { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +36,18 @@ namespace _19._08._2019
             modelBuilder.Entity<Books>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Books>()
+                .HasMany(e => e.Library)
+                .WithRequired(e => e.Books)
+                .HasForeignKey(e => e.BookID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.Library)
+                .WithRequired(e => e.Users)
+                .HasForeignKey(e => e.UserID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

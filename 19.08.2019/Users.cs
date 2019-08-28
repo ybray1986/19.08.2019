@@ -6,27 +6,21 @@ namespace _19._08._2019
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Books
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Books()
+        public Users()
         {
             Library = new HashSet<Library>();
         }
 
-        public int Id { get; set; }
+        public int ID { get; set; }
 
-        public int AuthorId { get; set; }
+        public string FIO { get; set; }
 
         [Required]
-        [StringLength(150)]
-        public string Title { get; set; }
-
-        public int? Pages { get; set; }
-
-        public int? Price { get; set; }
-
-        public virtual Authors Authors { get; set; }
+        [StringLength(50)]
+        public string Email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Library> Library { get; set; }

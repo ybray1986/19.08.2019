@@ -15,7 +15,7 @@ namespace _19._08._2019
             using (Model1 db = new Model1())
             {
                 books = db.Books.ToList();
-                ViewBag.AuthID = new SelectList(db.Authors.Select(i => i.Id).ToList(), "Id").ToList();
+                ViewBag.AuthID = db.Authors.ToList();
             }
             return View(books);
         }
