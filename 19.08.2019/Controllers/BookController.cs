@@ -14,31 +14,60 @@ namespace _19._08._2019
             List<Books> books;
             using (Model1 db = new Model1())
             {
-
                 books = db.Books.ToList();
+                ViewBag.AuthID = new SelectList(db.Authors.Select(i => i.Id).ToList(), "Id").ToList();
             }
-
             return View(books);
-
         }
 
-        [HttpGet]
-        public ActionResult Create()
+        public ActionResult CreateEdit()
         {
             return View();
         }
 
+        [HttpGet]
+        public ActionResult CreateEdit(int? id)
+        {
+            if (id != null)
+            {
+                Books books;
+                using (Model1 db = new Model1())
+                {
+                    books = db.Books.Where(x => x.Id == id).FirstOrDefault();
+                }
+                return View(books);
+            }
+            else
+            {
+                return View();
+            }
+        }
 
         [HttpPost]
-        public ActionResult Create(Books book)
+        public ActionResult CreateEdit(Books books)
         {
-            using (Model1 db = new Model1())
+            if (books.Id == 0)
             {
-                db.Books.Add(book);
-                db.SaveChanges();
-
+                using (Model1 db = new Model1())
+                {
+                    db.Books.Add(books);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
-            return RedirectToActionPermanent("Index", "Book");
+            else
+            {
+                using (Model1 db = new Model1())
+                {
+                    var oldAuthor = db.Books.Where(x => x.Id == books.Id).FirstOrDefault();
+                    oldAuthor.AuthorId = books.AuthorId;
+                    oldAuthor.Title = books.Title;
+                    oldAuthor.Pages = books.Pages;
+                    oldAuthor.Price = books.Price;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
         }
     }
 }

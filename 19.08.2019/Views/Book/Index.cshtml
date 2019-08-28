@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Books";
 }
-<span >@Html.ActionLink("Создать", "Create", "Book")</span>
+<span >@Html.ActionLink("Create Book", "CreateEdit", "Book")</span>
 @model List<Books>
 <table class="table">
     <thead>
@@ -25,7 +25,7 @@
                 <th scope="row">@item.Title</th>
                 <th scope="row">@item.Pages</th>
                 <th scope="row">@item.Price</th>
-                <td scope="row">@Html.ActionLink("Edit Books", "Edit", "Book", new { id = @item.Id }, null)</td>
+                <td scope="row">@Html.ActionLink("Edit Book", "CreateEdit", "Book", new { item.Id }, null)</td>
             </tr>
 
             }
