@@ -23,10 +23,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("О программе", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>*@
                     <li>@Html.ActionLink("Авторы", "Index", "Author")</li>
                     <li>@Html.ActionLink("Книги", "Index", "Book")</li>
+                    <li>@Html.ActionLink("Пользователи", "Index", "Users")</li>
+                    <li>@Html.ActionLink("Бибилиотека", "Index", "Library")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

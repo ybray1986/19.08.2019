@@ -4,53 +4,44 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace _19._08._2019
+namespace _19._08._2019.Controllers
 {
-    public class BookController : Controller
+    public class UsersController : Controller
     {
-        // GET: Book
+        // GET: Users
         public ActionResult Index()
         {
-            List<Books> books;
-            using (Model1 db = new Model1())
-            {
-                books = db.Books.ToList();
-            }
-            return View(books);
-        }
-
-        public ActionResult CreateEdit()
-        {
-            
             return View();
         }
-
+        public ActionResult CreateEdit()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
             if (id != null)
             {
-                Books books;
+                Users users;
                 using (Model1 db = new Model1())
                 {
-                    books = db.Books.Where(x => x.Id == id).FirstOrDefault();
+                    users = db.Users.Where(x => x.ID == id).FirstOrDefault();
                 }
-                return View(books);
+                return View(users);
             }
             else
             {
                 return View();
             }
         }
-
         [HttpPost]
-        public ActionResult CreateEdit(Books books)
+        public ActionResult CreateEdit(Users user)
         {
-            if (books.Id == 0)
+            if (user.ID == 0)
             {
                 using (Model1 db = new Model1())
                 {
-                    db.Books.Add(books);
+                    db.Users.Add(user);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -59,11 +50,9 @@ namespace _19._08._2019
             {
                 using (Model1 db = new Model1())
                 {
-                    var oldBook = db.Books.Where(x => x.Id == books.Id).FirstOrDefault();
-                    oldBook.AuthorId = books.AuthorId;
-                    oldBook.Title = books.Title;
-                    oldBook.Pages = books.Pages;
-                    oldBook.Price = books.Price;
+                    var oldUser = db.Users.Where(x => x.ID == user.ID).FirstOrDefault();
+                    oldUser.FIO = user.FIO;
+                    oldUser.Email = user.Email;
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
