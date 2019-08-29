@@ -41,9 +41,13 @@ namespace _19._08._2019.Controllers
             {
                 using (Model1 db = new Model1())
                 {
-                    db.Users.Add(user);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    if (ModelState.IsValid)
+                    {
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                        return Redirect("Index");
+                    }
+                    return View();
                 }
             }
             else
@@ -54,7 +58,7 @@ namespace _19._08._2019.Controllers
                     oldUser.FIO = user.FIO;
                     oldUser.Email = user.Email;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("Index");
                 }
             }
         }

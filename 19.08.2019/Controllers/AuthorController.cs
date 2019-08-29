@@ -53,7 +53,7 @@ namespace _19._08._2019
                 {
                     db.Authors.Add(author);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("Index");
                 }
             }
             else
@@ -64,7 +64,7 @@ namespace _19._08._2019
                     oldAuthor.FirstName = author.FirstName;
                     oldAuthor.LastName = author.LastName;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("Index");
                 }
             }
         }

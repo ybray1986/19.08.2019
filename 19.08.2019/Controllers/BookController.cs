@@ -15,19 +15,23 @@ namespace _19._08._2019
             using (Model1 db = new Model1())
             {
                 books = db.Books.ToList();
+                
             }
             return View(books);
         }
 
         public ActionResult CreateEdit()
         {
-            
             return View();
         }
 
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
+            using (Model1 db = new Model1())
+            {
+                ViewBag.AuthID = new SelectList(db.Authors.ToList(),"Id");
+            }
             if (id != null)
             {
                 Books books;
@@ -52,7 +56,7 @@ namespace _19._08._2019
                 {
                     db.Books.Add(books);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("Index");
                 }
             }
             else
@@ -65,7 +69,7 @@ namespace _19._08._2019
                     oldBook.Pages = books.Pages;
                     oldBook.Price = books.Price;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return Redirect("Index");
                 }
             }
         }
