@@ -73,5 +73,15 @@ namespace _19._08._2019
                 }
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            using (Model1 db = new Model1())
+            {
+                db.Books.Remove(db.Books.Find(id));
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
