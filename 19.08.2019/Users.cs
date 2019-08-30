@@ -13,9 +13,9 @@ namespace _19._08._2019
         {
             Library = new HashSet<Library>();
         }
-
         public int ID { get; set; }
 
+        [Required]
         public string FIO { get; set; }
 
         [Required]

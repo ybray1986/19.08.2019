@@ -30,7 +30,7 @@ namespace _19._08._2019
         {
             using (Model1 db = new Model1())
             {
-                ViewBag.AuthID = new SelectList(db.Authors.ToList(),"Id");
+                ViewBag.AuthID = new SelectList(db.Authors.Select(i => i.Id).ToList());
             }
             if (id != null)
             {
@@ -69,7 +69,7 @@ namespace _19._08._2019
                     oldBook.Pages = books.Pages;
                     oldBook.Price = books.Price;
                     db.SaveChanges();
-                    return Redirect("Index");
+                    return RedirectToAction("Index");
                 }
             }
         }
