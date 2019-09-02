@@ -11,12 +11,18 @@ namespace _19._08._2019.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View();
+            List<Users> user = new List<Users>();
+            using (Model1 db = new Model1())
+            {
+                user = db.Users.ToList();
+            }
+            return View(user);
         }
         public ActionResult CreateEdit()
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
@@ -34,6 +40,7 @@ namespace _19._08._2019.Controllers
                 return View();
             }
         }
+
         [HttpPost]
         public ActionResult CreateEdit(Users user)
         {
@@ -41,13 +48,9 @@ namespace _19._08._2019.Controllers
             {
                 using (Model1 db = new Model1())
                 {
-                    if (ModelState.IsValid)
-                    {
-                        db.Users.Add(user);
-                        db.SaveChanges();
-                        return Redirect("Index");
-                    }
-                    return View();
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return Redirect("Index");
                 }
             }
             else
@@ -58,7 +61,7 @@ namespace _19._08._2019.Controllers
                     oldUser.FIO = user.FIO;
                     oldUser.Email = user.Email;
                     db.SaveChanges();
-                    return Redirect("Index");
+                    return RedirectToAction("Index");
                 }
             }
         }
