@@ -64,7 +64,7 @@ namespace _19._08._2019
                     oldAuthor.FirstName = author.FirstName;
                     oldAuthor.LastName = author.LastName;
                     db.SaveChanges();
-                    return Redirect("Index");
+                    return RedirectToAction("Index");
                 }
             }
         }

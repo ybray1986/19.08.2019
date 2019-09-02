@@ -16,6 +16,7 @@ namespace _19._08._2019.Repository
         public void Add(Library model)
         {
             db.Library.Add(model);
+            db.SaveChanges();
         }
 
         public void Delete(int id)
