@@ -30,7 +30,7 @@ namespace _19._08._2019
         {
             using (Model1 db = new Model1())
             {
-                ViewBag.AuthID = new SelectList(db.Authors.ToList(),"Id");
+                ViewBag.AuthID = new SelectList(db.Authors.ToList());
             }
             if (id != null)
             {

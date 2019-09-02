@@ -41,13 +41,13 @@ namespace _19._08._2019.Controllers
             {
                 using (Model1 db = new Model1())
                 {
-                    if (ModelState.IsValid)
-                    {
-                        db.Users.Add(user);
-                        db.SaveChanges();
-                        return Redirect("Index");
-                    }
-                    return View();
+                    //if (ModelState.IsValid)
+                    //{
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    return Redirect("Index");
+                    //}
+                    //return View();
                 }
             }
             else
