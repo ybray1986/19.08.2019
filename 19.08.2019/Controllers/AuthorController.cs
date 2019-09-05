@@ -13,7 +13,7 @@ namespace _19._08._2019
         public ActionResult Index()
         {
             List<Authors> authors;
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 authors = db.Authors.ToList();
             }
@@ -33,7 +33,7 @@ namespace _19._08._2019
             if (id != null)
             {
                 Authors author;
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     author = db.Authors.Where(x => x.Id == id).FirstOrDefault();
                 }
@@ -49,7 +49,7 @@ namespace _19._08._2019
         {
             if (author.Id == 0)
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     db.Authors.Add(author);
                     db.SaveChanges();
@@ -58,7 +58,7 @@ namespace _19._08._2019
             }
             else
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     var oldAuthor = db.Authors.Where(x => x.Id == author.Id).FirstOrDefault();
                     oldAuthor.FirstName = author.FirstName;

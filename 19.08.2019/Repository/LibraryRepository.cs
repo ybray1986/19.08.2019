@@ -7,10 +7,10 @@ namespace _19._08._2019.Repository
 {
     public class LibraryRepository :IRepository<Library>
     {
-        public readonly Model1 db;
+        public readonly DbContext db;
         public LibraryRepository()
         {
-            db = new Model1();
+            db = new DbContext();
         }
 
         public void Add(Library model)

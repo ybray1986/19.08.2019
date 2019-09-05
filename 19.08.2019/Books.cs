@@ -25,6 +25,7 @@ namespace _19._08._2019
         public int? Pages { get; set; }
 
         public int? Price { get; set; }
+        public int GenreId { get; set; }
 
         public virtual Authors Authors { get; set; }
 

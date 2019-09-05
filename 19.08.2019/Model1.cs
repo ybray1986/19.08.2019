@@ -5,9 +5,9 @@ namespace _19._08._2019
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class DbContext : System.Data.Entity.DbContext
     {
-        public Model1()
+        public DbContext()
             : base("name=Model1")
         {
         }
@@ -16,7 +16,7 @@ namespace _19._08._2019
         public virtual DbSet<Books> Books { get; set; }
         public virtual DbSet<Library> Library { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-
+        public virtual  DbSet<Genre> Genre { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Authors>()

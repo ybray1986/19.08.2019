@@ -12,7 +12,7 @@ namespace _19._08._2019.Controllers
         public ActionResult Index()
         {
             List<Users> user = new List<Users>();
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 user = db.Users.ToList();
             }
@@ -29,7 +29,7 @@ namespace _19._08._2019.Controllers
             if (id != null)
             {
                 Users users;
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     users = db.Users.Where(x => x.ID == id).FirstOrDefault();
                 }
@@ -46,7 +46,7 @@ namespace _19._08._2019.Controllers
         {
             if (user.ID == 0)
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     db.Users.Add(user);
                     db.SaveChanges();
@@ -55,7 +55,7 @@ namespace _19._08._2019.Controllers
             }
             else
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     var oldUser = db.Users.Where(x => x.ID == user.ID).FirstOrDefault();
                     oldUser.FIO = user.FIO;

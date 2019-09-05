@@ -20,6 +20,7 @@ namespace _19._08._2019.Infrastucture
         private void AddBindings()
         {
             kernel.Bind<IRepository<Library>>().To<LibraryRepository>();
+            //kernel.Bind<>
         }
 
         public object GetService(Type serviceType)

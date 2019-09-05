@@ -12,7 +12,7 @@ namespace _19._08._2019
         public ActionResult Index()
         {
             List<Books> books;
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 books = db.Books.ToList();
                 
@@ -28,14 +28,14 @@ namespace _19._08._2019
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 ViewBag.AuthID = new SelectList(db.Authors.Select(i => i.Id).ToList());
             }
             if (id != null)
             {
                 Books books;
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     books = db.Books.Where(x => x.Id == id).FirstOrDefault();
                 }
@@ -52,7 +52,7 @@ namespace _19._08._2019
         {
             if (books.Id == 0)
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     db.Books.Add(books);
                     db.SaveChanges();
@@ -61,7 +61,7 @@ namespace _19._08._2019
             }
             else
             {
-                using (Model1 db = new Model1())
+                using (DbContext db = new DbContext())
                 {
                     var oldBook = db.Books.Where(x => x.Id == books.Id).FirstOrDefault();
                     oldBook.AuthorId = books.AuthorId;
@@ -76,7 +76,7 @@ namespace _19._08._2019
 
         public ActionResult Delete(int id)
         {
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 db.Books.Remove(db.Books.Find(id));
                 db.SaveChanges();

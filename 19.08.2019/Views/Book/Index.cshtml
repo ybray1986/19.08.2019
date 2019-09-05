@@ -11,6 +11,7 @@
             <th scope="col">Title</th>
             <th scope="col">Pages</th>
             <th scope="col">Price</th>
+            <th scope="col">Genre</th>
             <th scope="col">Handle</th>
 
         </tr>
@@ -25,6 +26,7 @@
                 <th scope="row">@item.Title</th>
                 <th scope="row">@item.Pages</th>
                 <th scope="row">@item.Price</th>
+                <th scope="row">@item.GenreId</th>
                 <td scope="row">@Html.ActionLink("Edit", "CreateEdit", "Book", new { item.Id }, null)/@Html.ActionLink("Delete", "Delete", "Book", new { item.Id }, null)</td>
             </tr>
 

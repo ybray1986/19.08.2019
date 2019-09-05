@@ -31,7 +31,7 @@ namespace _19._08._2019.Controllers
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
-            using (Model1 db = new Model1())
+            using (DbContext db = new DbContext())
             {
                 ViewBag.UserID = new SelectList(db.Users.Select(i => i.ID).ToList());
                 ViewBag.BookID = new SelectList(db.Books.Select(i => i.Id).ToList());
