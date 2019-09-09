@@ -11,7 +11,8 @@ namespace _19._08._2019.Repository
         void Add(T model);
         IEnumerable<T> List();
         T Get(int id);
-        void Edit(T model);
+        void Save();
+        void Update(T model);
         void Delete(int id);
     }
 }

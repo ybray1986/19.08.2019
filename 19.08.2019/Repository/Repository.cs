@@ -28,23 +28,28 @@ namespace _19._08._2019.Repository
 
         public void Delete(int id)
         {
-            T entity = table.Find(id);
-            table.Remove(entity);
+            T model = table.Find(id);
+            table.Remove(model);
         }
 
-        public void Edit(T model)
+        public void Update(T model)
         {
-            throw new NotImplementedException();
+            db.Entry(model).State = EntityState.Modified;
         }
 
         public T Get(int id)
         {
-            throw new NotImplementedException();
+            return table.Find(id);
         }
 
         public IEnumerable<T> List()
         {
-            throw new NotImplementedException();
+            return table.ToList();
+        }
+
+        public void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

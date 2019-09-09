@@ -57,7 +57,7 @@ namespace _19._08._2019.Controllers
             }
             else
             {
-                repo.Edit(library);
+                repo.Update(library);
                 return RedirectToAction("Index");
             }
         }

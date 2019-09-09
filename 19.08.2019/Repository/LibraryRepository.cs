@@ -44,5 +44,15 @@ namespace _19._08._2019.Repository
         {
             return db.Library.ToList();
         }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Library model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

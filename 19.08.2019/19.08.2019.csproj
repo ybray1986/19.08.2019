@@ -220,11 +220,11 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="DBContext\Context.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Infrastucture\NinjectDependencyResolver.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="Migrations\201909051337366_Genre.cs" />
