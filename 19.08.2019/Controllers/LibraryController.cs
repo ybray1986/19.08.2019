@@ -61,6 +61,18 @@ namespace _19._08._2019.Controllers
                 return RedirectToAction("Index");
             }
         }
+        //[OnlyAjaxAllowed]
+        public ActionResult GetTop5Orders(int userId)
+        {
+            /* List<Author> ab = {find id user}
+             * UserModel user = {Find User}
+             * var result = new JSonResult{
+             * Data = new {res = ab},
+             * JsonRequestBehaviour = JsonRequestBehaviour.AllowGet
+             * };
+             */
+            return View();
+        }
 
     }
 }

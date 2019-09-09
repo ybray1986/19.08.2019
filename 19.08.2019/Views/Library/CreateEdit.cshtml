@@ -5,6 +5,19 @@
 }
 
 <h2>CreateEdit</h2>
+@*<script src="~/Scripts/Apps/top5users.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    //window.onload = function () {
+        console.log("Function");
+        if (@Model.ID != null)
+        {
+            GetTop5Users(@Model.ID);
+        }
+        //
+    })
+</script>*@
+
 
 @using (Html.BeginForm()) 
 {
