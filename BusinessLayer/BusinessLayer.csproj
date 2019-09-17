@@ -57,17 +57,26 @@
     <Compile Include="DataTransferObjects\LibraryDTO.cs" />
     <Compile Include="DataTransferObjects\UsersDTO.cs" />
     <Compile Include="Infrastucture\ValidationException.cs" />
+    <Compile Include="Profiles\BLProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookService.cs" />
     <Compile Include="Services\IRepositoryService.cs" />
     <Compile Include="Services\LibraryService.cs" />
     <Compile Include="Services\RepositoryService.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Config\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{87B0D4FC-A995-48D0-B332-3999DC046714}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
