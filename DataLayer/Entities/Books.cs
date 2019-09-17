@@ -1,4 +1,4 @@
-namespace _19._08._2019
+namespace DataLayer.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -12,6 +12,7 @@ namespace _19._08._2019
         public Books()
         {
             Library = new HashSet<Library>();
+            Library1 = new HashSet<Library>();
         }
 
         public int Id { get; set; }
@@ -25,11 +26,13 @@ namespace _19._08._2019
         public int? Pages { get; set; }
 
         public int? Price { get; set; }
-        public int GenreId { get; set; }
 
         public virtual Authors Authors { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Library> Library { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Library> Library1 { get; set; }
     }
 }
