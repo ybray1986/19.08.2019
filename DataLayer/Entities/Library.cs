@@ -1,4 +1,4 @@
-namespace _19._08._2019
+namespace DataLayer.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -26,6 +26,10 @@ namespace _19._08._2019
 
         public virtual Books Books { get; set; }
 
+        public virtual Books Books1 { get; set; }
+
         public virtual Users Users { get; set; }
+
+        public virtual Users Users1 { get; set; }
     }
 }

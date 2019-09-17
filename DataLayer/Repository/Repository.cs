@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -8,18 +9,17 @@ namespace _19._08._2019.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DbContext db;
+        private readonly Model1 db;
         private readonly DbSet<T> table = null;
         public Repository()
         {
-            db = new DbContext();
+            db = new Model1();
             table = db.Set<T>();
-
         }
-        public Repository(DbContext db)
+        public Repository(string connectionStringParam) { db = new Model1(connectionStringParam); }
+        public Repository(Model1 dbParam)
         {
-            this.db = db;
-            table = db.Set<T>();
+            db = dbParam;
         }
         public void Add(T model)
         {

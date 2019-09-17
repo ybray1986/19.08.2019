@@ -1,4 +1,4 @@
-namespace _19._08._2019
+namespace DataLayer.Entities
 {
     using System;
     using System.Collections.Generic;

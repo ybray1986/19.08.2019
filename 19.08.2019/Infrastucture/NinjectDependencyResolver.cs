@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using _19._08._2019.Repository;
+using AutoMapper;
+using BusinessLayer.Profiles;
 using Ninject;
 
 namespace _19._08._2019.Infrastucture
@@ -19,9 +21,22 @@ namespace _19._08._2019.Infrastucture
 
         private void AddBindings()
         {
-            kernel.Bind<IRepository<Library>>().To<Repository<Library>>();
             //kernel.Bind<>
+            kernel.Bind<IRepository<Library>>().To<Repository<Library>>();
+
+            //AutoMapper
+            kernel.Bind<IMapper>().ToMethod(context =>
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile<BLProfile>();
+                    // Tell automapper to use ninject when creating value converters and resolvers
+                    cfg.ConstructServicesUsing(t => kernel.Get(t));
+                });
+                return config.CreateMapper();
+            }).InSingletonScope();
         }
+
         public object GetService(Type serviceType)
         {
             return kernel.TryGet(serviceType);
