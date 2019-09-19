@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessModels\OrderReminder.cs" />
+    <Compile Include="BusinessObjectBase\BusinessObjectBase.cs" />
     <Compile Include="DataTransferObjects\AuthorsDTO.cs" />
     <Compile Include="DataTransferObjects\BooksDTO.cs" />
     <Compile Include="DataTransferObjects\GenreDTO.cs" />

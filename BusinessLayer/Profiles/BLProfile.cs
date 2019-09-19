@@ -13,7 +13,7 @@ namespace BusinessLayer.Profiles
     {
         public BLProfile()
         {
-            this.CreateMap<Authors, LibrayrDTO>().ReverseMap();
+            this.CreateMap<Authors, LibraryDTO>().ReverseMap();
         }
     }
 }

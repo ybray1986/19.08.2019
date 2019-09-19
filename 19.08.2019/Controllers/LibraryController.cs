@@ -80,7 +80,7 @@ namespace _19._08._2019.Controllers
         {
             var LibraryDTO = DependencyResolver.Current.GetService<LibraryDTO>();
             var model = mapper.Map<LibraryViewModel>(LibraryDTO);
-            var libraryBOList = LibraryDTO.
+            var libraryBOList = LibraryDTO
             model = mapper.Map<LibraryViewModel>(libraryBOList);
 
         }
