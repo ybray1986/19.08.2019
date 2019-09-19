@@ -1,8 +1,11 @@
-namespace BusinessLayer.DataTransferObjects
-{
-    using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-    public class LibraryDTO
+namespace _19._08._2019.ViewModel.Library
+{
+    public class LibraryViewModel
     {
         private int userId;
         private int bookId;
@@ -12,11 +15,5 @@ namespace BusinessLayer.DataTransferObjects
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
         public DateTime ReturnedDate { get; set; }
-
-        public LibraryDTO GetLibraryDTOById(int id)
-        {
-            LibraryDTO librarys;
-
-        }
     }
 }

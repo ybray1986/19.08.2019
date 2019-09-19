@@ -4,11 +4,18 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using BusinessLayer.DataTransferObjects;
 
 namespace _19._08._2019
 {
     public class AuthorController : Controller
     {
+        IMapper mapper;
+        AuthorController(IMapper mapperParam)
+        {
+            mapper = mapperParam;
+        }
         // GET: Author
         public ActionResult Index()
         {
@@ -67,6 +74,11 @@ namespace _19._08._2019
                     return RedirectToAction("Index");
                 }
             }
+        }
+        public ActionResult Delete (int id)
+        {
+            var author = DependencyResolver.Current.GetService<AuthorsDTO>
+            var model = mapper.Map<>
         }
     }
 }

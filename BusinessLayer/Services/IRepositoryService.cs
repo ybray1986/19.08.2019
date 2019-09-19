@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Services
 {
-    interface IRepositoryService<T> where T: class
+    public interface IRepositoryService<T> where T: class
     {
         void Add(T model);
         IEnumerable<T> List();

@@ -30,7 +30,7 @@ namespace _19._08._2019.Infrastucture
                 var config = new MapperConfiguration(cfg =>
                 {
                     cfg.AddProfile<BLProfile>();
-                    // Tell automapper to use ninject when creating value converters and resolvers
+                    // Tell Automapper to use ninject when creating value converters and resolvers
                     cfg.ConstructServicesUsing(t => kernel.Get(t));
                 });
                 return config.CreateMapper();

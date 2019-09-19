@@ -1,21 +1,24 @@
-﻿using _19._08._2019.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ninject;
+using AutoMapper;
+using BusinessLayer.DataTransferObjects;
+using _19._08._2019.Infrastucture;
+using _19._08._2019.ViewModel.Library;
 
 namespace _19._08._2019.Controllers
 {
     public class LibraryController : Controller
     {
         // GET: Library
-        private IRepository<Library> repo;
+        private IMapper mapper;
 
-        public LibraryController(IRepository<Library> repoParam)
+        public LibraryController(IMapper mapperParam)
         {
-            repo = repoParam;
+            mapper = mapperParam;
         }
 
         public ActionResult Index()
@@ -73,6 +76,13 @@ namespace _19._08._2019.Controllers
              */
             return View();
         }
+        public ActionResult Delete(int id)
+        {
+            var LibraryDTO = DependencyResolver.Current.GetService<LibraryDTO>();
+            var model = mapper.Map<LibraryViewModel>(LibraryDTO);
+            var libraryBOList = LibraryDTO.
+            model = mapper.Map<LibraryViewModel>(libraryBOList);
 
+        }
     }
 }

@@ -241,6 +241,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\Library\LibraryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -337,6 +338,10 @@
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
       <Project>{14022F22-4A39-48D7-A594-D7A09E68EE2F}</Project>
       <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{87B0D4FC-A995-48D0-B332-3999DC046714}</Project>
+      <Name>DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
