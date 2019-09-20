@@ -1,5 +1,5 @@
-﻿using _19._08._2019;
-using _19._08._2019.Repository;
+﻿using DataLayer.Entities;
+using DataLayer.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataLayer.UnitOfWork
 {
-    interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork:IDisposable
     {
-        IRepository<Authors> Authors { get; set; }
-        IRepository<Books> Books { get; set; }
-        IRepository<Genre> Genre { get; set; }
-        IRepository<Library> Library { get; set; }
-        IRepository<Users> Users { get; set; }
-        void Save();
+        Repository<Authors> AuthorUoWRepository { get; set; }
+        Repository<Books> BookUoWRepository { get; set; }
+        Repository<Genre> GenreUoWRepository { get; set; }
+        Repository<Library> LibraryUoWRepository { get; set; }
+        Repository<Users> UserUoWRepository { get; set; }
     }
 }
