@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace _19._08._2019.Repository
+namespace DataLayer.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

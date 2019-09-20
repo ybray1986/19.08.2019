@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _19._08._2019.Repository
+namespace DataLayer.Repository
 {
     public interface IRepository<T> where T: class
     {
