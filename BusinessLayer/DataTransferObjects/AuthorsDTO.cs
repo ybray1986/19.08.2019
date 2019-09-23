@@ -1,5 +1,7 @@
 using AutoMapper;
 using DataLayer.UnitOfWork;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BusinessLayer.DataTransferObjects
@@ -20,8 +22,17 @@ namespace BusinessLayer.DataTransferObjects
             {
                 authors = unitOfWork.AuthorUoWRepository.List().Where(a => a.Id == id).Select(auth => mapper.Map<AuthorsDTO>(auth)).FirstOrDefault();
             }
-            BusinessObjectBase businessObjectBase = new BusinessObjectBase();
+            //BusinessObjectBase businessObjectBase = new BusinessObjectBase();
             return authors;
+        }
+        public List<AuthorsDTO> GetAll()
+        {
+            using (var unitOfWork = unitOfWorkFactory.Create())
+            {
+                var authors = unitOfWork.AuthorUoWRepository.List();
+                return authors as List<AuthorsDTO>;
+            }
+            
         }
         public void Delete(int id)
         {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using _19._08._2019.Repository;
 using AutoMapper;
 using BusinessLayer.Profiles;
 using Ninject;
+using _19._08._2019.Profiles;
 
 namespace _19._08._2019.Infrastucture
 {
-    public class NinjectDependencyResolver : IDependencyResolver
+    public class NinjectDependencyResolver: IDependencyResolver
     {
         private IKernel kernel;
         public NinjectDependencyResolver(IKernel kernelParam)
@@ -22,7 +22,7 @@ namespace _19._08._2019.Infrastucture
         private void AddBindings()
         {
             //kernel.Bind<>
-            kernel.Bind<IRepository<Library>>().To<Repository<Library>>();
+            //kernel.Bind<IRepository<Library>>().To<Repository<Library>>();
 
             //AutoMapper
             kernel.Bind<IMapper>().ToMethod(context =>
@@ -30,7 +30,8 @@ namespace _19._08._2019.Infrastucture
                 var config = new MapperConfiguration(cfg =>
                 {
                     cfg.AddProfile<BLProfile>();
-                    // Tell Automapper to use ninject when creating value converters and resolvers
+                    cfg.AddProfile<WebProfile>();
+                    // Tell Automapper to use Ninject when creating value converters and resolvers
                     cfg.ConstructServicesUsing(t => kernel.Get(t));
                 });
                 return config.CreateMapper();

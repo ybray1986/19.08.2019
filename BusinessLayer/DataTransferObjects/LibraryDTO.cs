@@ -13,10 +13,10 @@ namespace BusinessLayer.DataTransferObjects
         public DateTime Deadline { get; set; }
         public DateTime ReturnedDate { get; set; }
 
-        public LibraryDTO GetLibraryDTOById(int id)
-        {
-            LibraryDTO librarys;
+        //public LibraryDTO GetLibraryDTOById(int id)
+        //{
+        //    LibraryDTO librarys;
 
-        }
+        //}
     }
 }

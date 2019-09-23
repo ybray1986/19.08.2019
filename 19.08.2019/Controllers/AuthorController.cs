@@ -7,26 +7,24 @@ using System.Web.Mvc;
 using _19._08._2019.ViewModel.Authors;
 using AutoMapper;
 using BusinessLayer.DataTransferObjects;
+using _19._08._2019.Infrastucture;
 
 namespace _19._08._2019
 {
     public class AuthorController : Controller
     {
         IMapper mapper;
-        AuthorController(IMapper mapperParam)
+        public AuthorController(IMapper mapperParam)
         {
             mapper = mapperParam;
         }
         // GET: Author
         public ActionResult Index()
         {
-            List<Authors> authors;
-            using (DbContext db = new DbContext())
-            {
-                authors = db.Authors.ToList();
-            }
-
-            return View(authors);
+            var authorDTO = DependencyResolver.Current.GetService<AuthorsDTO>();
+            var authorList = authorDTO.GetAll();
+            var model = authorList.Select(m => mapper.Map<AuthorsViewModel>(m)).ToList();
+            return View(model);
         }
 
         public ActionResult CreateEdit()
@@ -37,15 +35,11 @@ namespace _19._08._2019
         [HttpGet]
         public ActionResult CreateEdit(int? id)
         {
-
+            var authorDTO = DependencyResolver.Current.GetService<AuthorsDTO>();
             if (id != null)
             {
-                Authors author;
-                using (DbContext db = new DbContext())
-                {
-                    author = db.Authors.Where(x => x.Id == id).FirstOrDefault();
-                }
-                return View(author);
+                authorDTO.GetAuthorsListById(id);
+                return View(authorDTO);
             }
             else
             {
@@ -53,27 +47,15 @@ namespace _19._08._2019
             }
         }
         [HttpPost]
-        public ActionResult CreateEdit(Authors author)
+        public ActionResult CreateEdit(AuthorsViewModel authorParam)
         {
-            if (author.Id == 0)
+            if (authorParam.Id == 0)
             {
-                using (DbContext db = new DbContext())
-                {
-                    db.Authors.Add(author);
-                    db.SaveChanges();
-                    return Redirect("Index");
-                }
+                return View(authorParam);
             }
             else
             {
-                using (DbContext db = new DbContext())
-                {
-                    var oldAuthor = db.Authors.Where(x => x.Id == author.Id).FirstOrDefault();
-                    oldAuthor.FirstName = author.FirstName;
-                    oldAuthor.LastName = author.LastName;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                return View(authorParam);
             }
         }
         public ActionResult Delete (int id)

@@ -22,7 +22,6 @@ namespace BusinessLayer
         }
         public BusinessObjectBase()
         {
-
         }
     }
 }

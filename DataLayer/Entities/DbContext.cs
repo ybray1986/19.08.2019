@@ -5,13 +5,13 @@ namespace DataLayer.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class DbContext : System.Data.Entity.DbContext
     {
-        public Model1()
+        public DbContext()
             : base("name=Model1")
         {
         }
-        public Model1(string connectionStringParam) : base(connectionStringParam) { }
+        public DbContext(string connectionStringParam) : base(connectionStringParam) { }
 
         public virtual DbSet<Authors> Authors { get; set; }
         public virtual DbSet<Books> Books { get; set; }

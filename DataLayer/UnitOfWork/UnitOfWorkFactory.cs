@@ -11,7 +11,7 @@ namespace DataLayer.UnitOfWork
     {
         public virtual IUnitOfWork Create()
         {
-            return new UnitOfWork(new Model1());
+            return new UnitOfWork(new DbContext());
         }
     }
 }

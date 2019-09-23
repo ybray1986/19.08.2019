@@ -11,83 +11,64 @@ namespace DataLayer.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        DbContext db;
+        Entities.DbContext db;
         public UnitOfWork()
         {
-            db = new Model1();
+            db = new Entities.DbContext();
         }
-        public UnitOfWork(DbContext model)
+        public UnitOfWork(Entities.DbContext model)
         {
             this.db = model;
         }
 
+
+        #region IDisposable Support
+        private bool disposedValue = false; // Для определения избыточных вызовов
+
+        Repository<Authors> _authorUoWRepository;
         public Repository<Authors> AuthorUoWRepository
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return _authorUoWRepository == null ? new Repository<Authors>(db) : _authorUoWRepository;
             }
         }
 
+        Repository<Books> _booksUoWRepository;
         public Repository<Books> BookUoWRepository
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return _booksUoWRepository == null ? new Repository<Books>(db) : _booksUoWRepository;
             }
         }
 
+        Repository<Genre> _genreUoWRepository;
         public Repository<Genre> GenreUoWRepository
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return _genreUoWRepository == null ? new Repository<Genre>(db) : _genreUoWRepository;
             }
         }
 
+        Repository<Library> _libraryUoWRepository;
         public Repository<Library> LibraryUoWRepository
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return _libraryUoWRepository == null ? new Repository<Library>(db) : _libraryUoWRepository;
             }
         }
 
+        Repository<Users> _usersUoWRepository;
         public Repository<Users> UserUoWRepository
         {
             get
             {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
+                return _usersUoWRepository == null ? new Repository<Users>(db) : _usersUoWRepository;
             }
         }
-
-        #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
 
         protected virtual void Dispose(bool disposing)
         {

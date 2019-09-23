@@ -10,6 +10,7 @@ namespace _19._08._2019.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using System.Web.Mvc;
 
     public static class NinjectWebCommon 
     {
@@ -53,7 +54,7 @@ namespace _19._08._2019.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            System.Web.Mvc.DependencyResolver.SetResolver(new _19._08._2019.Infrastucture.NinjectDependencyResolver(kernel));
+            DependencyResolver.SetResolver(new _19._08._2019.Infrastucture.NinjectDependencyResolver(kernel));
         }        
     }
 }
