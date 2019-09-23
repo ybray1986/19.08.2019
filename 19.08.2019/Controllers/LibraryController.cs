@@ -83,7 +83,6 @@ namespace _19._08._2019.Controllers
             var libraryBOList = LibraryDTO.GetLibraryDTOById(id);
             model = mapper.Map<LibraryViewModel>(libraryBOList);
             return RedirectToAction("Index");
-
         }
     }
 }

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataLayer.UnitOfWork
 {
-    public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        Repository<Authors> AuthorUoWRepository { get; set; }
-        Repository<Books> BookUoWRepository { get; set; }
-        Repository<Genre> GenreUoWRepository { get; set; }
-        Repository<Library> LibraryUoWRepository { get; set; }
-        Repository<Users> UserUoWRepository { get; set; }
+        Repository<Authors> AuthorUoWRepository { get; }
+        Repository<Books> BookUoWRepository { get; }
+        Repository<Genre> GenreUoWRepository { get; }
+        Repository<Library> LibraryUoWRepository { get; }
+        Repository<Users> UserUoWRepository { get; }
     }
 }

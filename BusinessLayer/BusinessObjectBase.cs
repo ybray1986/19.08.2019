@@ -13,12 +13,16 @@ namespace BusinessLayer
         //IMapper
         //UnitOfWork
         //To bind Mapping and UnitOfWork
-        IMapper mapper;
-        UnitOfWorkFactory unitOfWorkFactory;
+        protected IMapper mapper;
+        protected UnitOfWorkFactory unitOfWorkFactory;
         public BusinessObjectBase(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory)
         {
             this.mapper = mapper;
             this.unitOfWorkFactory = unitOfWorkFactory;
+        }
+        public BusinessObjectBase()
+        {
+
         }
     }
 }

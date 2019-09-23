@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using _19._08._2019.ViewModel.Authors;
 using AutoMapper;
 using BusinessLayer.DataTransferObjects;
 
@@ -77,8 +78,9 @@ namespace _19._08._2019
         }
         public ActionResult Delete (int id)
         {
-            var author = DependencyResolver.Current.GetService<AuthorsDTO>
-            var model = mapper.Map<>
+            var authorDTO = DependencyResolver.Current.GetService<AuthorsDTO>();
+            authorDTO.Delete(id);
+            return RedirectToAction("Index");
         }
     }
 }
