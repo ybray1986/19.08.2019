@@ -19,7 +19,16 @@ namespace DataLayer.Entities
         public virtual DbSet<Library> Library { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public class DbContextInitializer : DropCreateDatabaseAlways<DbContext>
+        {
+            protected override void Seed(DbContext context)
+            {
+                context.Authors.Add(new Entities.Authors { Id = 1, Books = })
+                base.Seed(context);
+            }
+        }
+
+            protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Authors>()
                 .Property(e => e.FirstName)

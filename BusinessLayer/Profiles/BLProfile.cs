@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLayer.DataTransferObjects;
 using DataLayer.Entities;
-using _19._08._2019.ViewModel.Authors;
 
 namespace BusinessLayer.Profiles
 {
@@ -14,8 +13,7 @@ namespace BusinessLayer.Profiles
     {
         public BLProfile()
         {
-            this.CreateMap<Authors, LibraryDTO>().ReverseMap();
-            this.CreateMap<AuthorsDTO, AuthorsViewModel>().ReverseMap();
+            //this.CreateMap<Authors, LibraryDTO>().ReverseMap();
         }
     }
 }

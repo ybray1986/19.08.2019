@@ -3,6 +3,7 @@ using DataLayer.UnitOfWork;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ninject;
 
 namespace BusinessLayer.DataTransferObjects
 {
@@ -11,6 +12,7 @@ namespace BusinessLayer.DataTransferObjects
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
         public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory)
             : base(mapper, unitOfWorkFactory)
         {}
