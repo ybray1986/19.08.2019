@@ -10,13 +10,10 @@ namespace BusinessLayer.DataTransferObjects
 {
     public class AuthorsDTO : BusinessObjectBase
     {
-
         //private readonly IKernel container;
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        //private AuthorsDTO() { }
 
         public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory/*, IKernel containerParam*/)
             : base(mapper, unitOfWorkFactory)
@@ -32,13 +29,12 @@ namespace BusinessLayer.DataTransferObjects
             {
                 authors = unitOfWork.AuthorUoWRepository.List().Where(a => a.Id == id).Select(auth => mapper.Map<AuthorsDTO>(auth)).FirstOrDefault();
             }
-            //BusinessObjectBase businessObjectBase = new BusinessObjectBase();
             return authors;
         }
+
         public List<AuthorsDTO> GetAll()
         {
             List<AuthorsDTO> authors = new List<AuthorsDTO>();
-
             using (var unitOfWork = unitOfWorkFactory.Create())
             {
                 authors = unitOfWork.AuthorUoWRepository.List().Select(item => mapper.Map<AuthorsDTO>(item)).ToList();
@@ -46,6 +42,7 @@ namespace BusinessLayer.DataTransferObjects
             return authors;
 
         }
+
         public void Delete(int id)
         {
             using (var unitOfWork = unitOfWorkFactory.Create())
