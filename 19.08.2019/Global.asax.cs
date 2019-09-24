@@ -2,7 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
-using static DataLayer.Entities.DbContext;
+using static DataLayer.Entities.DBContext;
 
 namespace _19._08._2019
 {

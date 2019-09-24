@@ -11,12 +11,8 @@ namespace DataLayer.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        Entities.DbContext db;
-        public UnitOfWork()
-        {
-            db = new Entities.DbContext();
-        }
-        public UnitOfWork(Entities.DbContext model)
+        DbContext db;
+        public UnitOfWork(DbContext model)
         {
             this.db = model;
         }

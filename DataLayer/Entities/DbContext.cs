@@ -5,13 +5,13 @@ namespace DataLayer.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class DbContext : System.Data.Entity.DbContext
+    public partial class DBContext : DbContext
     {
-        public DbContext()
+        public DBContext()
             : base("name=DbContext")
         {
         }
-        public DbContext(string connectionString): base(connectionString) { }
+        public DBContext(string connectionString): base(connectionString) { }
 
         public virtual DbSet<Authors> Authors { get; set; }
         public virtual DbSet<Books> Books { get; set; }
@@ -19,9 +19,9 @@ namespace DataLayer.Entities
         public virtual DbSet<Library> Library { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        public class DbContextInitializer : DropCreateDatabaseAlways<DbContext>
+        public class DbContextInitializer : DropCreateDatabaseAlways<DBContext>
         {
-            protected override void Seed(DbContext context)
+            protected override void Seed(DBContext context)
             {
                 context.Authors.Add(new Entities.Authors { Id = 1, FirstName = "John", LastName = "Doe" });
                 context.Authors.Add(new Entities.Authors { Id = 2, FirstName = "Colin", LastName = "Coles" });

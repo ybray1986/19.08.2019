@@ -12,7 +12,7 @@ namespace _19._08._2019.Profiles
     {
         public WebProfile()
         {
-            //this.CreateMap<AuthorsDTO, AuthorsViewModel>().ReverseMap();
+            this.CreateMap<AuthorsDTO, AuthorsViewModel>().ReverseMap();
         }
     }
 }

@@ -74,7 +74,7 @@
   <ItemGroup>
     <Compile Include="Entities\Authors.cs" />
     <Compile Include="Entities\Books.cs" />
-    <Compile Include="Entities\DbContext.cs" />
+    <Compile Include="Entities\DBContext.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Library.cs" />
     <Compile Include="Entities\Users.cs" />
