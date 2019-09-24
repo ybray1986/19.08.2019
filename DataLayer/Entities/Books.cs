@@ -27,7 +27,11 @@ namespace DataLayer.Entities
 
         public int? Price { get; set; }
 
+        public int? GenreId { get; set; }
+
         public virtual Authors Authors { get; set; }
+
+        public virtual Genre Genre { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Library> Library { get; set; }

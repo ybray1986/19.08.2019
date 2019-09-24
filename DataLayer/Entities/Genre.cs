@@ -9,6 +9,12 @@ namespace DataLayer.Entities
     [Table("Genre")]
     public partial class Genre
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Genre()
+        {
+            Books = new HashSet<Books>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
@@ -19,5 +25,8 @@ namespace DataLayer.Entities
         [Required]
         [StringLength(150)]
         public string PicturePath { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Books> Books { get; set; }
     }
 }

@@ -8,10 +8,10 @@ namespace DataLayer.Entities
     public partial class DbContext : System.Data.Entity.DbContext
     {
         public DbContext()
-            : base("name=Model1")
+            : base("name=DbContext")
         {
         }
-        public DbContext(string connectionStringParam) : base(connectionStringParam) { }
+        public DbContext(string connectionString): base(connectionString) { }
 
         public virtual DbSet<Authors> Authors { get; set; }
         public virtual DbSet<Books> Books { get; set; }
@@ -23,12 +23,13 @@ namespace DataLayer.Entities
         {
             protected override void Seed(DbContext context)
             {
-                context.Authors.Add(new Entities.Authors { Id = 1, Books = })
+                context.Authors.Add(new Entities.Authors { Id = 1, FirstName = "John", LastName = "Doe" });
+                context.Authors.Add(new Entities.Authors { Id = 2, FirstName = "Colin", LastName = "Coles" });
                 base.Seed(context);
             }
         }
 
-            protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Authors>()
                 .Property(e => e.FirstName)

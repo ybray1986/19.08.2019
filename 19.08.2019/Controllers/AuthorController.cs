@@ -21,10 +21,9 @@ namespace _19._08._2019
         // GET: Author
         public ActionResult Index()
         {
-            var model = authorList.Select(m => mapper.Map<AuthorsViewModel>(m)).ToList();
             var authorDTO = DependencyResolver.Current.GetService<AuthorsDTO>();
             var authorList = authorDTO.GetAll();
-            
+            var model = authorList.Select(m => mapper.Map<AuthorsViewModel>(m)).ToList();
             return View(model);
         }
 

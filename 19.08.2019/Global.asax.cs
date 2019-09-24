@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using static DataLayer.Entities.DbContext;
 
 namespace _19._08._2019
 {
@@ -12,6 +14,7 @@ namespace _19._08._2019
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Database.SetInitializer(new DbContextInitializer());
         }
     }
 }
