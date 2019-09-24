@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using _19._08._2019.ViewModel.Authors;
 using AutoMapper;
 using BusinessLayer.DataTransferObjects;
-using _19._08._2019.Infrastucture;
+using Ninject.Activation;
+using Ninject.Web.Mvc;
+//using _19._08._2019.Infrastucture;
 
 namespace _19._08._2019
 {

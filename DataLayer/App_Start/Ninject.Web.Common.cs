@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(_19._08._2019.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(_19._08._2019.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(DataLayer.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(DataLayer.App_Start.NinjectWebCommon), "Stop")]
 
-namespace _19._08._2019.App_Start
+namespace DataLayer.App_Start
 {
     using System;
     using System.Web;
@@ -11,10 +11,6 @@ namespace _19._08._2019.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
-    using System.Web.Mvc;
-    using Infrastucture;
-    using Ninject.Modules;
-    using Ninject.Web.Mvc;
 
     public static class NinjectWebCommon
     {
@@ -27,7 +23,7 @@ namespace _19._08._2019.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            //bootstrapper.Initialize(CreateKernel);
         }
 
         /// <summary>
@@ -65,8 +61,6 @@ namespace _19._08._2019.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Load<AutoMapperModule>();
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }
