@@ -20,6 +20,7 @@ namespace DataLayer.Repository
         public Repository(DbContext dbParam)
         {
             db = dbParam;
+            table = db.Set<T>();
         }
         public void Add(T model)
         {

@@ -9,7 +9,7 @@ namespace DataLayer.UnitOfWork
 {
     public class UnitOfWorkFactory
     {
-        public virtual IUnitOfWork Create()
+        public IUnitOfWork Create()
         {
             return new UnitOfWork(new DBContext());
         }

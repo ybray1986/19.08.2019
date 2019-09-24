@@ -3,20 +3,25 @@ using DataLayer.UnitOfWork;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Ninject;
+using System.ComponentModel;
 
 namespace BusinessLayer.DataTransferObjects
 {
-    public class AuthorsDTO: BusinessObjectBase
+    public class AuthorsDTO : BusinessObjectBase
     {
-        private readonly IN
+
+        private readonly IContainer container;
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory)
+        //public AuthorsDTO() { }
+
+        public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory, IContainer containerParam /*, IComponentContainer containerParam*/)
             : base(mapper, unitOfWorkFactory)
-        {}
+        {
+            container = containerParam;
+        }
         //Add Methods to work with (CRUD)
         public AuthorsDTO GetAuthorsListById(int? id)
         {
@@ -30,12 +35,14 @@ namespace BusinessLayer.DataTransferObjects
         }
         public List<AuthorsDTO> GetAll()
         {
+            List<AuthorsDTO> authors = new List<AuthorsDTO>();
+
             using (var unitOfWork = unitOfWorkFactory.Create())
             {
-                var authors = unitOfWork.AuthorUoWRepository.List();
-                return authors as List<AuthorsDTO>;
+                authors = unitOfWork.AuthorUoWRepository.List().Select(item => mapper.Map<AuthorsDTO>(item)).ToList();
             }
-            
+            return authors;
+
         }
         public void Delete(int id)
         {

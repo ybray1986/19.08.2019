@@ -17,7 +17,6 @@ namespace DataLayer.UnitOfWork
             this.db = model;
         }
 
-
         #region IDisposable Support
         private bool disposedValue = false; // Для определения избыточных вызовов
 
@@ -73,6 +72,10 @@ namespace DataLayer.UnitOfWork
                 if (disposing)
                 {
                     // TODO: освободить управляемое состояние (управляемые объекты).
+                    if (db != null)
+                    {
+                        db.Dispose();
+                    }
                 }
 
                 // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить ниже метод завершения.
@@ -94,7 +97,7 @@ namespace DataLayer.UnitOfWork
             // Не изменяйте этот код. Разместите код очистки выше, в методе Dispose(bool disposing).
             Dispose(true);
             // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
-            // GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this);
         }
         #endregion
 
