@@ -243,14 +243,6 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Infrastucture\AutoMapperModule.cs" />
     <Compile Include="Infrastucture\1.cs" />
-    <Compile Include="Migrations\201909051337366_Genre.cs" />
-    <Compile Include="Migrations\201909051337366_Genre.Designer.cs">
-      <DependentUpon>201909051337366_Genre.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051357373_Book.cs" />
-    <Compile Include="Migrations\201909051357373_Book.Designer.cs">
-      <DependentUpon>201909051357373_Book.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -366,14 +358,6 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909051337366_Genre.resx">
-      <DependentUpon>201909051337366_Genre.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051357373_Book.resx">
-      <DependentUpon>201909051357373_Book.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
