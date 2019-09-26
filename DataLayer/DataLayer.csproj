@@ -125,10 +125,6 @@
     <Compile Include="Migrations\201909241503528_InitialCreate.Designer.cs">
       <DependentUpon>201909241503528_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909251443012_NewMigration.cs" />
-    <Compile Include="Migrations\201909251443012_NewMigration.Designer.cs">
-      <DependentUpon>201909251443012_NewMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -162,15 +158,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909241503528_InitialCreate.resx">
       <DependentUpon>201909241503528_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909251443012_NewMigration.resx">
-      <DependentUpon>201909251443012_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

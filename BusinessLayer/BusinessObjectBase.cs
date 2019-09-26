@@ -11,7 +11,7 @@ namespace BusinessLayer
     public abstract class BusinessObjectBase
     {
         //IMapper
-        //UnitOfWork
+        //UnitOfWorkFactory
         //To bind Mapping and UnitOfWork(each repository to mapping)
         protected IMapper mapper;
         protected UnitOfWorkFactory unitOfWorkFactory;
