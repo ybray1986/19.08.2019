@@ -99,6 +99,11 @@ namespace DataLayer.UnitOfWork
             // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
             GC.SuppressFinalize(this);
         }
+
+        public void Save()
+        {
+            db.SaveChanges();
+        }
         #endregion
 
     }

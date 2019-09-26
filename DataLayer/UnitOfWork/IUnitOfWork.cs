@@ -15,5 +15,6 @@ namespace DataLayer.UnitOfWork
         Repository<Genre> GenreUoWRepository { get; }
         Repository<Library> LibraryUoWRepository { get; }
         Repository<Users> UserUoWRepository { get; }
+        void Save();
     }
 }

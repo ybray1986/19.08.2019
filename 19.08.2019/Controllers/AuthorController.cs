@@ -38,27 +38,24 @@ namespace _19._08._2019
         public ActionResult CreateEdit(int? id)
         {
             var authorDTO = DependencyResolver.Current.GetService<AuthorsDTO>();
+            var model = mapper.Map<AuthorsViewModel>(authorDTO);
             if (id != null)
             {
-                authorDTO.GetAuthorsListById(id);
-                return View(authorDTO);
+                var authorDTOList = authorDTO.GetAuthorsListById(id);
+                model = mapper.Map<AuthorsViewModel>(authorDTOList);
             }
-            else
-            {
-                return View();
-            }
+            return View(model);
         }
         [HttpPost]
         public ActionResult CreateEdit(AuthorsViewModel authorParam)
         {
-            if (authorParam.Id == 0)
+            var authorDTO = mapper.Map<AuthorsDTO>(authorParam);
+            if (ModelState.IsValid)
             {
-                return View(authorParam);
+                authorDTO.Save();
+                return RedirectToAction("Index");
             }
-            else
-            {
-                return View(authorParam);
-            }
+            else return View(authorParam);
         }
         public ActionResult Delete (int id)
         {

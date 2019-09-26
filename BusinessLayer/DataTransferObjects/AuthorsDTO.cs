@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
 using Ninject;
+using System;
+using DataLayer.Entities;
 
 namespace BusinessLayer.DataTransferObjects
 {
@@ -50,6 +52,29 @@ namespace BusinessLayer.DataTransferObjects
                 unitOfWork.AuthorUoWRepository.Delete(id);
                 unitOfWork.AuthorUoWRepository.Save();
             }
+        }
+
+        public void Save()
+        {
+            using (var unitOfWork = unitOfWorkFactory.Create())
+            {
+                if (Id != 0)
+                    Update(unitOfWork);
+                else
+                    Add(unitOfWork);
+            }
+        }
+
+        private void Add(IUnitOfWork unitOfWork)
+        {
+            var author = mapper.Map<Authors>(this);
+            unitOfWork.AuthorUoWRepository.Add(author);
+            unitOfWork.Save();
+        }
+
+        private void Update(IUnitOfWork unitOfWork)
+        {
+            throw new NotImplementedException();
         }
     }
 }
