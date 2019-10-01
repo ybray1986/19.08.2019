@@ -66,7 +66,7 @@ namespace _19._08._2019.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Load<AutoMapperModule>();
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }
