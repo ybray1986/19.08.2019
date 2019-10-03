@@ -25,6 +25,8 @@ namespace DataLayer.Entities
             {
                 context.Authors.Add(new Entities.Authors { Id = 1, FirstName = "John", LastName = "Doe" });
                 context.Authors.Add(new Entities.Authors { Id = 2, FirstName = "Colin", LastName = "Coles" });
+                context.Genre.Add(new Entities.Genre { Id = 1, Name = "Fantasy", PicturePath = "null" });
+                context.Books.Add(new Entities.Books { Id = 1, AuthorId = 1, Title = "MVC 5 in 5 seconds!", Pages = 1, Price = 15000, GenreId = 1 });
                 base.Seed(context);
             }
         }

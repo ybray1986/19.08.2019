@@ -234,23 +234,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BooksViewModelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\AuthorController.cs" />
+    <Compile Include="Controllers\AuthorsViewModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EditHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Infrastucture\AutoMapperModule.cs" />
-    <Compile Include="Infrastucture\1.cs" />
+    <Compile Include="Infrastucture\AutoMapperProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Profiles\WebProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\Authors\AuthorsViewModel.cs" />
+    <Compile Include="ViewModel\Books\BooksViewModel.cs" />
     <Compile Include="ViewModel\Library\LibraryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -330,14 +331,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Author\Index.cshtml" />
-    <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\Author\CreateEdit.cshtml" />
-    <Content Include="Views\Book\CreateEdit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\CreateEdit.cshtml" />
-    <Content Include="Views\Library\Index.cshtml" />
-    <Content Include="Views\Library\CreateEdit.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
@@ -346,11 +339,13 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\AuthorsViewModel\Index.cshtml" />
+    <Content Include="Views\BooksViewModel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Pictures\Genre\" />
-    <Folder Include="Views\Genre\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
