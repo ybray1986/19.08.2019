@@ -17,6 +17,7 @@ namespace BusinessLayer.DataTransferObjects
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        public AuthorsDTO() { }
         public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory/*, IKernel containerParam*/)
             : base(mapper, unitOfWorkFactory)
         {

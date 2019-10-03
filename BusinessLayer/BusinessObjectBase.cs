@@ -15,6 +15,7 @@ namespace BusinessLayer
         //To bind Mapping and UnitOfWork(each repository to mapping)
         protected IMapper mapper;
         protected UnitOfWorkFactory unitOfWorkFactory;
+        public BusinessObjectBase() { }
         public BusinessObjectBase(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory)
         {
             this.mapper = mapper;
