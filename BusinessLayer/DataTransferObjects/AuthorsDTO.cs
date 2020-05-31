@@ -10,24 +10,23 @@ using DataLayer.Entities;
 
 namespace BusinessLayer.DataTransferObjects
 {
-    public class AuthorsDTO : BusinessObjectBase
+    public class AuthorsDTO
     {
-        //private readonly IKernel container;
+        private IMapper mapper;
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public AuthorsDTO(IMapper mapper, UnitOfWorkFactory unitOfWorkFactory/*, IKernel containerParam*/)
-            : base(mapper, unitOfWorkFactory)
+        public AuthorsDTO() { }
+        public AuthorsDTO(IMapper mapperParam)
         {
-            //container = containerParam;
+            mapper = mapperParam;
         }
-
-        //Add Methods to work with (CRUD)
         public AuthorsDTO GetAuthorsListById(int? id)
         {
             AuthorsDTO authors;
-            using (var unitOfWork = unitOfWorkFactory.Create())
+            using (var unitOfWork = UnitOfWorkFactory.Create())
             {
                 authors = unitOfWork.AuthorUoWRepository.List().Where(a => a.Id == id).Select(auth => mapper.Map<AuthorsDTO>(auth)).FirstOrDefault();
             }
@@ -37,7 +36,7 @@ namespace BusinessLayer.DataTransferObjects
         public List<AuthorsDTO> GetAll()
         {
             List<AuthorsDTO> authors = new List<AuthorsDTO>();
-            using (var unitOfWork = unitOfWorkFactory.Create())
+            using (var unitOfWork = UnitOfWorkFactory.Create())
             {
                 authors = unitOfWork.AuthorUoWRepository.List().Select(item => mapper.Map<AuthorsDTO>(item)).ToList();
             }
@@ -47,7 +46,7 @@ namespace BusinessLayer.DataTransferObjects
 
         public void Delete(int id)
         {
-            using (var unitOfWork = unitOfWorkFactory.Create())
+            using (var unitOfWork = UnitOfWorkFactory.Create())
             {
                 unitOfWork.AuthorUoWRepository.Delete(id);
                 unitOfWork.AuthorUoWRepository.Save();
@@ -56,7 +55,7 @@ namespace BusinessLayer.DataTransferObjects
 
         public void Save()
         {
-            using (var unitOfWork = unitOfWorkFactory.Create())
+            using (var unitOfWork = UnitOfWorkFactory.Create())
             {
                 if (Id != 0)
                     Update(unitOfWork);

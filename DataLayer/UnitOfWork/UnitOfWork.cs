@@ -17,6 +17,9 @@ namespace DataLayer.UnitOfWork
             this.db = model;
         }
 
+        
+        
+
         Repository<Authors> _authorUoWRepository;
         public Repository<Authors> AuthorUoWRepository
         {

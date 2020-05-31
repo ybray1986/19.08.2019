@@ -1,5 +1,4 @@
-﻿using _19._08._2019.Profiles;
-using _19._08._2019.ViewModel.Authors;
+﻿using _19._08._2019.ViewModel.Authors;
 using AutoMapper;
 using BusinessLayer.DataTransferObjects;
 using BusinessLayer.Profiles;
@@ -25,21 +24,10 @@ namespace _19._08._2019.Infrastucture
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.ConstructServicesUsing(type => context.Kernel.Get(type)); // optional, but getting errors
+                cfg.ConstructServicesUsing(type => context.Kernel.Get(type));
+                cfg.AddProfile<AutoMapperProfile>();
 
-                cfg.CreateMap<Authors, AuthorsDTO>() // optional: .ForMember(t=> t.Id, to => to.Ignore())
-                .ConstructUsing(item => DependencyResolver.Current.GetService<AuthorsDTO>());
-
-                cfg.CreateMap<AuthorsDTO, AuthorsViewModel>()
-                .ConstructUsing(item => DependencyResolver.Current.GetService<AuthorsViewModel>());
-
-                cfg.CreateMap<AuthorsViewModel, AuthorsDTO>()
-                .ConstructUsing(item => DependencyResolver.Current.GetService<AuthorsDTO>());
-
-                cfg.CreateMap<AuthorsDTO, Authors>()
-                .ConstructUsing(item => DependencyResolver.Current.GetService<Authors>());
             });
-
             //Mapper.AssertConfigurationIsValid(); // optional
             return Mapper.Instance;
         }
