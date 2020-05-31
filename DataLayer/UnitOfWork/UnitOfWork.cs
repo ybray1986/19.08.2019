@@ -17,9 +17,6 @@ namespace DataLayer.UnitOfWork
             this.db = model;
         }
 
-        #region IDisposable Support
-        private bool disposedValue = false; // Для определения избыточных вызовов
-
         Repository<Authors> _authorUoWRepository;
         public Repository<Authors> AuthorUoWRepository
         {
@@ -64,7 +61,8 @@ namespace DataLayer.UnitOfWork
                 return _usersUoWRepository == null ? new Repository<Users>(db) : _usersUoWRepository;
             }
         }
-
+        #region IDisposable Support
+        private bool disposedValue = false; // Для определения избыточных вызовов
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -99,12 +97,12 @@ namespace DataLayer.UnitOfWork
             // TODO: раскомментировать следующую строку, если метод завершения переопределен выше.
             GC.SuppressFinalize(this);
         }
-
+        #endregion
         public void Save()
         {
             db.SaveChanges();
         }
-        #endregion
+        
 
     }
 }
